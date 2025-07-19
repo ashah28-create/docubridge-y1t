@@ -1,4 +1,7 @@
 from flask import Flask, render_template, request, jsonify
+import pandas as pd
+from werkzeug.utils import secure_filename
+from io import BytesIO
 import os
 
 app = Flask(__name__)
@@ -9,35 +12,36 @@ def index():
     return render_template('index.html')
 
 def allowed_filetype(filename):
-    return '.xls' in filename or '.xlsx' in filename
+    return filename.lower().endswith('.xls') or filename.lower().endswith('.xlsx')
 
 @app.route('/upload', methods=["POST"])
 def uploadForm():
+    if 'excel_file' not in request.files or 'user_question' not in request.form:
+        return jsonify({"confirmation": "Missing file or question.", "table_html": ""}), 400
 
-    if 'excel_file' not in request.files or 'question' not in request.form:
-        return jsonify({"error":"Missing file or question"}), 400
-
-    question = request.form.get('question')
+    question = request.form.get('user_question')
     file = request.files['excel_file']
 
     if file.filename == '':
-        return jsonify({"error":"No Selected File"}), 400
-    
+        return jsonify({"confirmation": "No file selected.", "table_html": ""}), 400
     if question == '':
-        return jsonify({"error":"No Question Given"}), 400
-    
+        return jsonify({"confirmation": "No question given.", "table_html": ""}), 400
     if not allowed_filetype(file.filename):
-        return jsonify({'error':'Not an allowed filetype'}), 400
-    
+        return jsonify({"confirmation": "Not an allowed filetype.", "table_html": ""}), 400
 
-    print("File Received" + file.filename)
-    print("Question Received" + question)
+    filename = file.filename
+    confirmation = f"File received: {filename}. Question received: {question}"
 
-    return jsonify({
-        "message":"Success",
-        "File Received" : file.filename,
-        "Question Received" : question
-    }) 
+    table_html = None
+    try:
+        excel_bytes = file.read()
+        excel_io = BytesIO(excel_bytes)
+        df = pd.read_excel(excel_io)
+        table_html = df.head().to_html(classes="table table-bordered table-sm", index=False)
+    except Exception as e:
+        table_html = f"<div class='alert alert-danger'>Error reading Excel file: {e}</div>"
+
+    return jsonify({"confirmation": confirmation, "table_html": table_html})
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
