@@ -1,18 +1,147 @@
+/* Base styles */
 body {
-    background: #f8f9fa;
-    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(to right, #e8f0f9, #f8f9fa);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
 }
+
+/* Main card */
 .container {
-    margin-top: 40px;
+    max-width: 600px;
+    margin: 60px auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
-h1, h3 {
+
+/* Headings */
+h1 {
     text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #005580;
+}
+
+/* Form */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="file"],
+input[type="text"] {
+    padding: 12px 14px;
     margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
 }
-.card {
-    margin-top: 20px;
+
+input[type="file"] {
+    background-color: #f4f4f4;
 }
-.confirmation {
+
+button {
+    background-color: #005580;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #004466;
+}
+
+/* Answer + confirmation styling */
+.confirmation,
+.answer {
     margin-top: 20px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 1rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
     text-align: center;
 }
+
+.alert-success {
+    background-color: #e0f7ec;
+    color: #26734d;
+}
+
+.alert-info {
+    background-color: #e6f4fd;
+    color: #005580;
+}
+
+/* Table */
+#table-preview {
+    margin-top: 30px;
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    margin-top: 10px;
+}
+
+.table th,
+.table td {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.table thead {
+    background-color: #f1f1f1;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+/* Intro text block */
+.intro {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Title */
+.intro h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #005580;
+    margin-bottom: 16px;
+}
+
+/* Subtitle */
+.intro .subtitle {
+    font-size: 1.25rem;
+    color: #444;
+    margin-bottom: 12px;
+}
+
+/* Description paragraph */
+.intro .description {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
