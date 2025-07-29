@@ -1,6 +1,6 @@
 # ModelMind: DocuBridge’s AI Financial Modeling Assistant
 
-ModelMind is a browser-based AI assistant that simplifies financial modeling and analysis. Users can upload Excel files and ask natural-language questions about the data. Powered by OpenAI’s GPT, ModelMind responds with clear, human-readable insights — no Excel plugin or technical background required.
+ModelMind is a browser-based AI assistant that simplifies financial modeling and analysis. Users can upload Excel files and ask natural-language questions about the data. Powered by Google's Gemini, ModelMind responds with clear, human-readable insights — no Excel plugin or technical background required.
 
 Created as part of the **Harvard Undergraduate Ventures-Tech Summer Program (HUVTSP 2025)**, this tool helps make financial models more accessible, especially for junior analysts, students, and non-technical users.
 
@@ -23,13 +23,13 @@ Created as part of the **Harvard Undergraduate Ventures-Tech Summer Program (HUV
 
 ## Tech Stack
 
-| Layer         | Tools Used                      |
-| ------------- | ------------------------------- |
-| **Frontend**  | HTML, CSS (Bootstrap)           |
-| **Backend**   | Python, Flask, Pandas           |
-| **AI Engine** | OpenAI GPT (via API)            |
-| **Hosting**   | Local / Replit (temporary dev)  |
-| **Versioning**| Git, GitHub                     |
+| Layer         | Tools Used                                       |
+| ------------- | ------------------------------------------------ |
+| **Frontend**  | HTML, CSS (Bootstrap)                            |
+| **Backend**   | Python, Flask, Pandas                            |
+| **AI Engine** | Google Gemini (via API)                          |
+| **Hosting**   | Local (VS Code) with GitHub for version control  |
+| **Versioning**| Git, GitHub                                      |
 
 ---
 
@@ -61,7 +61,7 @@ cd docubridge-y1t
 
 ---
 
-## 👥 Contributors (Order TBD)
+## Contributors (Order TBD)
 
 - [Hugo Chung](https://github.com/HugoC1000)
 - [Maruthi Kavuri](#)
